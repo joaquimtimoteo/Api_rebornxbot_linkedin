@@ -1,0 +1,27 @@
+# Ignore Python virtual environments
+venv/
+# Python
+__pycache__/
+*.pyc
+
+# Ambiente
+.env
+.env.local
+
+# Dependências
+venv/  # Ignore a pasta do ambiente virtual
+
+# Logs
+*.log
+
+# Configuração de IDEs
+.DS_Store
+.idea/
+.vscode/
+
+# Arquivos de PID
+*.pid
+
+# Outros arquivos temporários
+*.tmp
+*.temp
