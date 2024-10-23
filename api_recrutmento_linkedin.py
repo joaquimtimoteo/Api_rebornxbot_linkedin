@@ -13,9 +13,11 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import jwt
 from datetime import datetime, timedelta
+from passlib.hash import bcrypt
 
 load_dotenv()
 app = FastAPI()
+app = FastAPI(title="API reborn Xboot- linkdin recrutmento", version="1.0.0")
 router = APIRouter()
 
 MONGO_URI = os.getenv('MONGO_URI')
