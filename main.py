@@ -23,12 +23,13 @@ main_app.add_middleware(
 )
 
 main_app.mount("/recrutamento", recruitment_app)
+
 main_app.mount("/curriculos", curriculum_app)
 
 @main_app.get("/", tags=["Home"])
 async def read_root():
     return {
-        "message": "Bem-vindo à API de Recrutamento e Geração de Currículos da Reborn xbot",
+        "message": "Bem-vindo à API de Recrutamento e Geração de Currículos",
         "endpoints": {
             "/recrutamento": "Endpoints relacionados ao recrutamento.",
             "/curriculos": "Endpoints para geração e manipulação de currículos."
@@ -52,6 +53,9 @@ async def custom_exception_handler(request, exc):
         status_code=500,
         content={"message": "Ocorreu um erro interno. Tente novamente mais tarde."}
     )
+
+
+app = main_app  
 
 if __name__ == "__main__":
     import uvicorn
