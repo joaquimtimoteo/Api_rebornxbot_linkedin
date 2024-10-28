@@ -1,30 +1,33 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+import logging
+
 from api_recrutmento_linkedin import app as recruitment_app
 from api_gerador_curriculos import app as curriculum_app
-import logging
+from whatsapp_rebornbot_api import app as whatsapp_reborn_app
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 main_app = FastAPI(
-    title="API de Recrutamento e Geração de Currículos",
-    description="Esta API permite gerenciar processos de recrutamento e gerar currículos de forma automatizada.",
+    title="API de Recrutamento, Geração de Currículos e Xbot WhatsApp",
+    description="API para gerenciar recrutamento, geração de currículos automatizada e integração com XBot para WhatsApp",
     version="1.0.0",
 )
 
 main_app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 main_app.mount("/recrutamento", recruitment_app)
-
 main_app.mount("/curriculos", curriculum_app)
+main_app.mount("/whatsapp", whatsapp_reborn_app)
 
 @main_app.get("/", tags=["Home"])
 async def read_root():
@@ -32,7 +35,8 @@ async def read_root():
         "message": "Bem-vindo à API de Recrutamento e Geração de Currículos",
         "endpoints": {
             "/recrutamento": "Endpoints relacionados ao recrutamento.",
-            "/curriculos": "Endpoints para geração e manipulação de currículos."
+            "/curriculos": "Endpoints para geração e manipulação de currículos.",
+            "/whatsapp": "Endpoints para integração com o XBot no WhatsApp."
         }
     }
 
@@ -54,9 +58,8 @@ async def custom_exception_handler(request, exc):
         content={"message": "Ocorreu um erro interno. Tente novamente mais tarde."}
     )
 
-
-app = main_app  
+app = main_app
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(main_app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
