@@ -16,7 +16,9 @@ app = FastAPI()
 # Configuração de CORS
 origins = [
     "http://localhost:3000",  # Se o frontend estiver rodando no localhost:3000
-    "https://reborntechnology.tech",  # Substitua pelo domínio do seu frontend
+    "https://reborntechnology.tech",
+    "https://api-rebornxbot-linkedin.onrender.com"
+    # Substitua pelo domínio do seu frontend
 ]
 
 app.add_middleware(
