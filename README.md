@@ -1,5 +1,3 @@
-Claro! Aqui está um exemplo de `README.md` que você pode usar para documentar seu projeto no GitHub. Este arquivo fornecerá uma visão geral do projeto, como configurá-lo e usá-lo, além de outras informações úteis.
-
 ```markdown
 # API de Recrutamento, Geração de Currículos e XBot WhatsApp
 
