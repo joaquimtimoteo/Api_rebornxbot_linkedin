@@ -22,6 +22,17 @@ main_app = FastAPI(
     version="1.0.0",
 )
 
+origins = [
+    "https://rebornbot.vercel.app",  
+    "http://localhost:3000",  
+    "http://localhost:8000",        
+    "http://127.0.0.1", 
+    "https://www.linkedin.com",
+    "https://register-and-login-rebornxboot.onrender.com",  
+    "https://register-and-login-rebornxboot.onrender.com", 
+    'https://register-and-login-rebornxboot.onrender.com/docs#/default/user_login_api_user_login_post'
+]
+
 main_app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
